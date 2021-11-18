@@ -12,9 +12,11 @@ const userReducer = (state = initialState, action) => {
     case ACTION_TYPES.CREATE_USER: {
       const { users } = state;
       const { data } = action;
+      const {isAuth} = state
       const newUser = {
         ...data,
         id: Date.now(),
+        isAuth: !isAuth,
       };
       const newUsers = [...users, newUser];
       return { users: newUsers };
